@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<title>卡瘦</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+		<script type="text/javascript">
+			<!--复制函数，传入选择的节点和一个提示文本，里面还有一个定时函数，1秒后弹窗弹出 -->
+			function copy(id, text) {
+				const range = document.createRange();
+				range.selectNode(document.getElementById(id));
+
+				const selection = window.getSelection();
+				if (selection.rangeCount > 0) selection.removeAllRanges();
+				selection.addRange(range);
+				<!--1秒后弹窗弹出-->
+				setTimeout(function() {
+					$('.zhezao').show();
+					$('.tanchuang').show();
+				}, 1000)
+				document.execCommand('copy');
+				<!--弹出提示文本-->
+				alert(text);
+			} //id 是要复制的 元素id   text 是要显示的名字
+
+			$(function() {
+				<!--意思是class为copy，left，create-live-btn都绑定这个复制点击事件 -->
+				$('.copy,.left,.right,.create-live-btn').click(function() { //点击位置的 class
+					copy('article', '已复制好，请在微信粘贴使用'); //拷贝文本的id 显示的文字
+				});
+
+				<!--绑定底部点击弹出遮罩层，弹窗事件 -->
+				$('.dibu').click(function() {
+					$('.zhezao').show();
+					$('.tanchuang').show();
+				}) // .show()  原理：设置display:block;
+
+				<!--关闭遮罩层及弹窗 -->
+				$('.close').click(function() {
+					$('.zhezao').hide(); // .hide() 原理：设置display:none;
+					$('.tanchuang').hide();
+				})
+			});
+
+			<!-- 每隔60秒，弹出一次弹窗。遮罩层在下，弹窗在上-->
+			setInterval(function() {
+				$('.zhezao').show();
+				$('.tanchuang').show();
+			}, 60000);
+		</script>
+		</script>
+	</head>
+
+	<body>
+		<!--头部，固定浮在页头，半透明-->
+		<div class="tou">
+			<div class="weixin">
+				<div class="wxNum">
+					<img src="img/wxNum.gif">
+				</div>
+				<div class="w1">
+					<div class="fuzhi" style="margin-top:5px;">
+						<div style="float: left;margin-top: 10px;">
+							微信 <span id="article" style="color:yellow;">ceo4932</span>
+						</div>
+						<img src="img/copyWx.png" class="copy" style="display: block;float:left;  width: 100px;margin-left: 10px;">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--头部黑色块，在最前面随滚动条滑动，划上去之后则透明色会展示出来-->
+		<div style="background:black;height:60px; width:100%;" />
+
+		<!--正文部分 -->
+		<div class="zhengwen">
+			<img class="topImg" alt="卡瘦" src="img/home1.jpg" />
+			<img class="topImg" alt="卡瘦" src="img/home2.jpg" />
+			<img class="topImg" alt="卡瘦" src="img/home3.jpg" />
+			<img class="topImg" alt="卡瘦" src="img/home4.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home5.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home27.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home6.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home7.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home8.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home9.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home10.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home11.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home12.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home13.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home14.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home15.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home16.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home17.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home18.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home19.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home20.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home21.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home22.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home23.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/wx.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home24.jpg" />
+			<div class="create-live-btn">
+				<!--图标-->
+				<div class="create-icon"></div>
+				<div><span>复制微信咨询：<span id="article" class="wechatNum" style="color:#FFFFFF;">ceo4932</span></span></div>
+			</div>
+			<img class="copy homeImg" alt="卡瘦" src="img/home25.jpg" />
+			<img class="copy homeImg" alt="卡瘦" src="img/home26.jpg" />
+
+			<!--底部，固定浮在页脚，跟正文同等大小 -->
+			<div class="dibu">
+				<img src="img/foot.jpg" style="margin: 0 auto;width: 100%;float: left;">
+			</div>
+
+		</div>
+
+		<div class="w2">
+			<p><span style="color:#666 ">版权所有:绍兴智驾科技有限公司</span></p>
+		</div>
+
+		<!--modal弹窗 -->
+		<div class="tanchuang">
+			<div class="close">
+				<img src="img/close.png">
+			</div>
+			<div class="w3" style="height: 15%;">
+				添加微信
+			</div>
+			<div class="w5" style="height: 35%;">
+				<img src="img/wx.jpg" class="" style="width: 200px;">
+			</div>
+			<div class="" style="text-align:center;color:red;font-weight: bold;height: 8%;">
+				微信号:ceo4932
+			</div>
+			<div class="w7" style="height: 30%;">
+				专业导师亲自指导<br>一手资源全方位扶持新人<br>诚邀您加入卡瘦<br>
+				携手共进 合作共赢
+			</div>
+
+			<div class="w55" style="height: 12%;">
+				<div class="left">
+					加入我们
+				</div>
+				<div class="right">
+					复制微信
+				</div>
+			</div>
+
+		</div>
+
+		<!--遮罩层，配合弹窗展现，类似导航条的半黑透明色，z-index是展示层的顺序，只要弹出的展示层顺序大就行 -->
+		<div class="zhezao" style="z-index: 2;">
+		</div>
+	</body>
+</html>
